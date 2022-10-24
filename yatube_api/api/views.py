@@ -66,9 +66,7 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """Выполним запрос к БД."""
-        user = self.request.user
-        queryset = user.user.all()
-        return queryset
+        return self.request.user.follower.all()
 
     def perform_create(self, serializer):
         """Создаём подписку,только для авторизованных клиентов."""
